@@ -33,13 +33,16 @@ class Useful(ExampleBase):
         # initializes value of the total stock value to 0
         sum = 0
         # turn the dictionary's tuple into list in order to perform arithmetic
-        # then traverse through the dictionary's tuples
-        for tuple_values in list(self.stocks.values()):
-            product = 1
-            # traverse through the values inside tuples
-            for element in tuple_values:
-                # calculate the value of each stock as the product of share times price
-                product = product * element
+        # then traverse through the dictionary's tuples.
+        # items[0] is _number_of_shares and item[1] is _price inside the tuple
+        for items in list(self.stocks.values()):
+            # if _number_of_shares is negative, raise Exception
+            try:
+                product = items[0] * items[1]
+                if items[0] < 0:
+                    raise ExampleException("Invalid number of shares!")
+            except ExampleException as error:
+                print(error.message)
             # sum up each term of the stock tuple
             sum += product
         return sum
@@ -47,42 +50,7 @@ class Useful(ExampleBase):
     # string method overriding the one from base class
     # outputs a table of stock dictionary and total stock value
     def __str__(self):
-        for numbers, price in self.stocks.items():
-            print("On", numbers, price[0], "stocks are purchased at $", price[1])
+        for numbers_of_shares, price in self.stocks.items():
+            print("On", numbers_of_shares, price[0], "stocks are purchased at $", price[1])
 
         return "Company's Symbol " + self.company_name
-
-
-# # Main --commented out and chucked into lab2_classes.py
-# if __name__ == "__main__":
-#     # stock dictionary, key string date, value tuple (shares,price)
-#     stocks_dict = {
-#         "10-10-2020": (2, 2),
-#         "10-11-2020": (1, 2),
-#     }
-#
-#     # instantiate object stock
-#     example = ExampleBase("GOOG", stocks_dict)
-#
-#     # output
-#     print(example.stocks)
-#
-#     # second stock dictionary to demonstrate other in add_purchase()
-#     more_stocks_dict = {
-#         "10-12-2020": (3, 2),
-#         "10-13-2020": (4, 2)
-#     }
-#
-#     # one stock dictionary to demonstrate **kwargs in add_purchase()
-#     one_stock = {"10-14-2020": (5, 2)}
-#
-#     # demonstrate add_purchase()
-#     example.add_purchase(more_stocks_dict, **one_stock)
-#     print(example.stocks)
-#
-#     calc = Useful("AMAZ", stocks_dict)
-#
-#     # output the total stock value
-#     print(calc.compute_value())
-#
-#     print(calc)

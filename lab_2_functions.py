@@ -29,7 +29,6 @@ def var_args(**kwargs):
     if kwargs is not None:
         for key, value in kwargs.items():
             print("key:", key, " value:", value)
-
     # output a blank line
     return print()
 

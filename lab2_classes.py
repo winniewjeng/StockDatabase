@@ -29,5 +29,8 @@ if __name__ == "__main__":
     stock_holds2 = Useful("AMAZ", stocks_dict)
     print(stock_holds2)
 
-    # output the total stock value
-    print("total value: ", stock_holds2.compute_value())
+    # total value of the stocks is assigned to a float variable called value
+    value = stock_holds2.compute_value()
+
+    # output the total stock value, rounding to 2 decimal places
+    print("total value: ", round(value, 2))
