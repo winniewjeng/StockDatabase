@@ -68,15 +68,21 @@ if __name__ == "__main__":
         print(stock_hold_2)
         print("total value: $", round(value_2, 2))
     except ExampleException as e:
-        # prints the object dictionary as usual
+        """This commented out section comes from my own research on sys/traceback"""
+        # # prints the object dictionary as usual
+        # print(stock_hold_2)
+        # # outputs the error message
+        # print(repr(e.message))
+        # # sys outputs the nature of error--the error is an ExampleException
+        # print(sys.exc_info()[0])
+        # # traceback outputs the error location
+        # print("\nCall traceback:")
+        # print(traceback.format_exc())
+        """"This block is copied straight from the module's example on sys/traceback"""
         print(stock_hold_2)
-        # outputs the error message
-        print(repr(e.message))
-        # sys outputs the nature of error--the error is an ExampleException
-        print(sys.exc_info()[0])
-        # traceback outputs the error location
-        print("\nCall traceback:")
-        print(traceback.format_exc())
+        exc_type, exc_value, exc_traceback = sys.exc_info()
+        traceback.print_exception(exc_type, exc_value, exc_traceback, limit=2, file=sys.stdout)
+        print("*** tb_lineno:", exc_traceback.tb_lineno)
 
     print()
 
@@ -87,10 +93,14 @@ if __name__ == "__main__":
         print(stock_hold_3)
         print("total value: $", round(value_3, 2))
     except ExampleException as e:
+        # print(stock_hold_3)
+        # print(repr(e.message))
+        # print(sys.exc_info()[0])
+        # print("Call traceback:")
+        # print(traceback.format_exc())
         print(stock_hold_3)
-        print(repr(e.message))
-        print(sys.exc_info()[0])
-        print("Call traceback:")
-        print(traceback.format_exc())
+        exc_type, exc_value, exc_traceback = sys.exc_info()
+        traceback.print_exception(exc_type, exc_value, exc_traceback, limit=2, file=sys.stdout)
+        print("*** tb_lineno:", exc_traceback.tb_lineno)
 
     print()
