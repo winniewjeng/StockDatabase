@@ -1,3 +1,16 @@
+#! /usr/bin/env python3
+"""
+File: Jeng_Winnie_Lab1.py
+
+Author: Winnie Wei Jeng
+Assignment: Lab 2
+Professor: Phil Tracton
+Date: 10/07/2018
+
+The base and derived classes in this file lay out
+the structure of a simple stock-purchasing database
+
+"""
 
 from ExampleException import *
 

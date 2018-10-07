@@ -1,11 +1,20 @@
+#! /usr/bin/env python3
 """
-This program does important stuff
-And is written by me
-"""
+File: Jeng_Winnie_Lab2.py
 
+Author: Winnie Wei Jeng
+Assignment: Lab 2
+Professor: Phil Tracton
+Date: 10/07/2018
+
+This lab demonstrates dictionary processing
+with named and unnamed function input variables
+
+"""
 
 # the function takes a named argument of dict which defaults to an empty dictionary
 # it prints out keys and corresponding values if dictionary is not empty
+
 
 def dict_processing(dict="placeholder"):
     # output "empty dictionary" if it is empty
@@ -36,8 +45,8 @@ def var_args(**kwargs):
 # main
 
 if __name__ == "__main__":
-    # some dictionaries: books, languages, placeholder(empty), soEmpty(empty)
 
+    # some dictionaries: books, languages, placeholder(empty), soEmpty(empty)
     books = {
         "Odyssey": "Homer",
         "War and Peace": "Tolstoy",

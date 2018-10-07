@@ -1,7 +1,22 @@
+#! /usr/bin/env python3
+"""
+File: Jeng_Winnie_Lab1.py
+
+Author: Winnie Wei Jeng
+Assignment: Lab 2
+Professor: Phil Tracton
+Date: 10/07/2018
+
+This driver file tests the different methods inside the Example class
+It uses the custom exception class, ExampleException, to handle errors
+And it imports sys and traceback to output the error type and error location
+
+"""
 
 from Example import *
 from ExampleException import *
-import sys, traceback
+import sys
+import traceback
 
 if __name__ == "__main__":
 
@@ -27,13 +42,13 @@ if __name__ == "__main__":
     # instantiate an object named AMAZ that has a stock dictionary
     stock_hold_1 = Useful("AMAZ", stocks_dict)
 
-    # calling add_purchase function to expand the object's stock dictionary
+    # calling add_purchase method to expand the object's stock dictionary
     stock_hold_1.add_purchase(more_stocks_dict, **one_more_stock_dict)
 
-    # call compute_value function to compute the total values of stocks in object's dictionary
+    # call compute_value method to compute the total values of stocks in object's dictionary
     value_1 = stock_hold_1.compute_value()
 
-    # print the object by implicitly calling the string function
+    # print the object by implicitly calling the string method
     print(stock_hold_1)
 
     # output the total stock of the stock
@@ -53,8 +68,13 @@ if __name__ == "__main__":
         print(stock_hold_2)
         print("total value: $", round(value_2, 2))
     except ExampleException as e:
+        # prints the object dictionary as usual
         print(stock_hold_2)
+        # outputs the error message
         print(repr(e.message))
+        # sys outputs the nature of error--the error is an ExampleException
+        print(sys.exc_info()[0])
+        # traceback outputs the error location
         print("\nCall traceback:")
         print(traceback.format_exc())
 
@@ -69,7 +89,8 @@ if __name__ == "__main__":
     except ExampleException as e:
         print(stock_hold_3)
         print(repr(e.message))
-        print("\nCall traceback:")
+        print(sys.exc_info()[0])
+        print("Call traceback:")
         print(traceback.format_exc())
 
     print()
