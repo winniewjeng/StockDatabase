@@ -1,6 +1,7 @@
 
 from ExampleException import *
 
+
 # Base Class
 class ExampleBase:
 
@@ -31,8 +32,10 @@ class Useful(ExampleBase):
     def compute_value(self):
         value_sum = 0
         for item in list(self.stocks.values()):
+            # compute the value of the stocks
             product = item[0] * item[1]
             value_sum += product
+            # if the number of share is negative, raise a custom exception
             if item[0] < 0:
                 raise ExampleException("ERROR: Invalid number of shares!!")
         return value_sum

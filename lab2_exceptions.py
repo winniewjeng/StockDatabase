@@ -18,32 +18,58 @@ if __name__ == "__main__":
 
     invalid_stock_dict = {"10-16-2020": (-4, 0.85), "10-17-2020": (7, 0.55)}
 
+    more_valid_stock_dict = {"10-18-2020": (12, 10.58), "10-19-2020": (20, 11.00)}
+
     # ========================================================================== #
 
-    # instantiate object
+    """Testing Example Class by instantiating some objects and calling some functions"""
+
+    # instantiate an object named AMAZ that has a stock dictionary
     stock_hold_1 = Useful("AMAZ", stocks_dict)
 
+    # calling add_purchase function to expand the object's stock dictionary
     stock_hold_1.add_purchase(more_stocks_dict, **one_more_stock_dict)
 
-    # total value of the stocks is assigned to a float variable called value
-    value = stock_hold_1.compute_value()
+    # call compute_value function to compute the total values of stocks in object's dictionary
+    value_1 = stock_hold_1.compute_value()
 
+    # print the object by implicitly calling the string function
     print(stock_hold_1)
 
-    # output the total stock value
-    print("total value: ", round(value, 2))
+    # output the total stock of the stock
+    print("total value: $", round(value_1, 2))
 
     print()
 
-    # create an invalid_stock_dict where the number of share is negative
-
+    # create an object named TSLA
     stock_hold_2 = Useful("TSLA", valid_stock_dict)
+
+    # call add_purchase function and pass in a dictionary with invalid number of shares
     stock_hold_2.add_purchase(invalid_stock_dict)
 
+    # Apply custom exception handler to prevent program from crashing with invalid data
     try:
-        val = stock_hold_2.compute_value()
+        value_2 = stock_hold_2.compute_value()
         print(stock_hold_2)
-        print("total value: ", round(val, 2))
+        print("total value: $", round(value_2, 2))
     except ExampleException as e:
         print(stock_hold_2)
         print(repr(e.message))
+        print("\nCall traceback:")
+        print(traceback.format_exc())
+
+    print()
+
+    # End this program on a good note with a working object that does not throw exception
+    stock_hold_3 = Useful("NVDA", more_valid_stock_dict)
+    try:
+        value_3 = stock_hold_3.compute_value()
+        print(stock_hold_3)
+        print("total value: $", round(value_3, 2))
+    except ExampleException as e:
+        print(stock_hold_3)
+        print(repr(e.message))
+        print("\nCall traceback:")
+        print(traceback.format_exc())
+
+    print()
